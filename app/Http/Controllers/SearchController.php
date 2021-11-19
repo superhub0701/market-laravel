@@ -62,8 +62,8 @@ class SearchController extends Controller
         //user
         $userQuery = $request->get('user');
         if ($userQuery!== null){
-            $query->where('user',$userQuery);
-
+            $user = User::where('username',$userQuery)->first();
+            $query->where('user_id',$user->id);
         }
         //category
         $categoryQuery = $request->get('category');
